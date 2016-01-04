@@ -13,6 +13,7 @@ public class Main {
 		String fichier = Emplacement+"arbre.txt";
 		GrandArbre unGrandArbre;
 		Arbre unArbre;
+                VerifierAABRI vAABRI = new VerifierAABRI();
 		
 		FichierVersAABRI FVA = new FichierVersAABRI();
 		unGrandArbre = FVA.lireFichier(fichier);
@@ -24,12 +25,36 @@ public class Main {
 		AABRIVersFichier AVF = new AABRIVersFichier();
 		AVF.ecrireFichier(unGrandArbre, fw);
 		fw.close();		
-		AVF.afficherArbre(unGrandArbre);
+		AVF.afficherArbre(unGrandArbre); 
+                System.out.println("Insertion de la valeur 1");
+                unGrandArbre = ManipulationAABRI.insererValeur(unGrandArbre, 1);
+                AVF.afficherArbre(unGrandArbre); 
+                System.out.println("Insertion de la valeur 111");
+                unGrandArbre = ManipulationAABRI.insererValeur(unGrandArbre, 111);
+                AVF.afficherArbre(unGrandArbre); 
+                System.out.println("Suppression de la valeur 80");
+                unGrandArbre = ManipulationAABRI.supprimerValeur(unGrandArbre,80);
+                AVF.afficherArbre(unGrandArbre); 
+                
+                if(vAABRI.isAABRI(unGrandArbre)){
+                    System.out.println("L'arbre généré est bien un AABRI");
+                }else{
+                    System.out.println("L'arbre généré n'est pas un AABRI"); 
+                }
 		
-		System.out.println("Arbre généré:");
+		/*System.out.println("Arbre généré:");
 		AABRIAleatoire AA = new AABRIAleatoire();
-		unGrandArbre = AA.genererGrandArbre(9, 100);
+		unGrandArbre = AA.genererGrandArbre(5, 100);
 		AVF.afficherArbre(unGrandArbre);
+                
+                if(vAABRI.isAABRI(unGrandArbre)){
+                    System.out.println("L'arbre généré est bien un AABRI");
+                }else{
+                    System.out.println("L'arbre généré n'est pas un AABRI"); 
+                }*/
+                
+                
+                
 		
 	}
 		
