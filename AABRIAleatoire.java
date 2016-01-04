@@ -8,7 +8,7 @@ public class AABRIAleatoire {
 	public Arbre genererArbre(int p,int valMin, int valMax){
 		Arbre unArbre = new Arbre();
 		int min = valMax;
-		int max = 0;
+		int max = valMin;
 		int valRacine = 0;
 		for(int i=1; i<= p; i++){
 			valRacine = valMin + (int)(Math.random() * (valMax - valMin));
@@ -16,7 +16,7 @@ public class AABRIAleatoire {
 			if(valRacine < min){
 				min = valRacine;
 			}
-			if(valRacine > max && valRacine < valMax){
+			if(valRacine > max && valRacine <= valMax){
 				max = valRacine;
 			}
 		}
@@ -59,27 +59,27 @@ public class AABRIAleatoire {
 		int valMax = q;
 		int valeurChoisieMin;
 		
-		nbNoeudArbre = 1 + (int)(Math.random() * p);
+		nbNoeudArbre = 1 + (int)(Math.random() * (p-1));
 		unArbre = this.genererArbre(nbNoeudArbre,(q/2)-(q/p), (q/2)+(q/p));
 		unGrandArbre = this.insererArbre(unArbre, unGrandArbre);
 		min = unGrandArbre.getRacine().getMin();
 		max = unGrandArbre.getRacine().getMax();
 		
-		for(i = 2; i<  p; i++){			
-			while(!(unArbre.getMax()< min || unArbre.getMin() > max)){
-				nbNoeudArbre = 1 + (int)(Math.random() * p);
-				valMin[0] = 1 + (int)(Math.random() * (min - 1));
-				valMin[1] = max + (int)(Math.random() * (q - max));
-				valeurChoisieMin = (int)(Math.random());
-				if(valMin[valeurChoisieMin] < min){
-					valMax = valMin[valeurChoisieMin] + (int)(Math.random() * (min - valMin[valeurChoisieMin]));
-				}else if(valMin[valeurChoisieMin] > max){
-					valMax = valMin[valeurChoisieMin] + (int)(Math.random() * (q - valMin[valeurChoisieMin]));
-				}
-				valeurChoisieMin = 1 + (int)(Math.random() * (2 - 1));
-				unArbre = this.genererArbre(nbNoeudArbre, valMin[valeurChoisieMin], valMax);
-			}
-			unGrandArbre = this.insererArbre(unArbre, unGrandArbre);
+		for(i = 1; i<  p; i++){                     
+                    nbNoeudArbre = 1 + (int)(Math.random() * p);
+                    valMin[0] = (int)(Math.random() * min);
+                    valMin[1] = max +1;
+                    valeurChoisieMin = (int)(Math.random()*2);
+                    if(valMin[valeurChoisieMin] < min){
+                            valMax = min ;
+                            min = valMin[valeurChoisieMin];
+                    }else if(valMin[valeurChoisieMin] > max){
+                            valMax = valMin[valeurChoisieMin] + (int)(Math.random() * (q - valMin[valeurChoisieMin]));
+                            max = valMax;
+                    }
+                    unArbre = this.genererArbre(nbNoeudArbre, valMin[valeurChoisieMin], valMax);                    
+                    unGrandArbre = this.insererArbre(unArbre, unGrandArbre);
+                    unArbre = new Arbre();
 		}
 		return unGrandArbre;
 	}
