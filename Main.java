@@ -1,3 +1,7 @@
+import GestionAABRI.FichierVersAABRI;
+import GestionAABRI.VerifierAABRI;
+import GestionAABRI.ManipulationAABRI;
+import GestionAABRI.AABRIVersFichier;
 import Class.Arbre;
 import Class.GrandArbre;
 import java.io.*;
@@ -15,8 +19,7 @@ public class Main {
 		Arbre unArbre;
                 VerifierAABRI vAABRI = new VerifierAABRI();
 		
-		FichierVersAABRI FVA = new FichierVersAABRI();
-		unGrandArbre = FVA.lireFichier(fichier);
+		unGrandArbre = FichierVersAABRI.lireFichier(fichier);
 		System.out.println("Fichier vers arbre :");
 		System.out.println(unGrandArbre);
 		

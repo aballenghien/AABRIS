@@ -1,3 +1,5 @@
+package GestionAABRI;
+
 import Class.Arbre;
 import Class.GrandArbre;
 
@@ -13,7 +15,7 @@ public class AABRIAleatoire {
          * @param valMax
          * @return 
          */
-	public Arbre genererArbre(int p,int valMin, int valMax){
+	public static Arbre genererArbre(int p,int valMin, int valMax){
             Arbre unArbre = new Arbre();
             int min = valMax;
             int max = valMin;
@@ -43,7 +45,7 @@ public class AABRIAleatoire {
          * @param q
          * @return 
          */
-	public GrandArbre genererGrandArbre(int p, int q){
+	public static GrandArbre genererGrandArbre(int p, int q){
             GrandArbre unGrandArbre = new GrandArbre();
             Arbre unArbre;
             int i;
@@ -56,8 +58,8 @@ public class AABRIAleatoire {
 
             // on génère un arbre qui sera la racine, c'est valeur sont à peu près au centre de 0 et p
             nbNoeudArbre = 1 + (int)(Math.random() * (p-1));
-            unArbre = this.genererArbre(nbNoeudArbre,(q/2)-(q/p), (q/2)+(q/p));
-            unGrandArbre = this.insererArbre(unArbre, unGrandArbre);
+            unArbre = AABRIAleatoire.genererArbre(nbNoeudArbre,(q/2)-(q/p), (q/2)+(q/p));
+            unGrandArbre = AABRIAleatoire.insererArbre(unArbre, unGrandArbre);
             min = unGrandArbre.getRacine().getMin();
             max = unGrandArbre.getRacine().getMax();
 
@@ -74,8 +76,8 @@ public class AABRIAleatoire {
                         valMax = valMin[valeurChoisieMin] + (int)(Math.random() * (q - valMin[valeurChoisieMin]));
                         max = valMax;
                 }
-                unArbre = this.genererArbre(nbNoeudArbre, valMin[valeurChoisieMin], valMax);                    
-                unGrandArbre = this.insererArbre(unArbre, unGrandArbre);
+                unArbre = AABRIAleatoire.genererArbre(nbNoeudArbre, valMin[valeurChoisieMin], valMax);                    
+                unGrandArbre = AABRIAleatoire.insererArbre(unArbre, unGrandArbre);
                 unArbre = new Arbre();
             }
             return unGrandArbre;
@@ -88,7 +90,7 @@ public class AABRIAleatoire {
          * @param unGrandArbre
          * @return 
          */
-	public GrandArbre insererArbre(Arbre unArbre,GrandArbre unGrandArbre){
+	public static GrandArbre insererArbre(Arbre unArbre,GrandArbre unGrandArbre){
             if(unGrandArbre.getRacine().getRacine()==0){
                     unGrandArbre.setRacine(unArbre);
             }else{

@@ -1,3 +1,5 @@
+package GestionAABRI;
+
 
 import Class.Arbre;
 import Class.GrandArbre;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  */
 public class VerifierAABRI {
     
-    public boolean isAABRI(GrandArbre unGrandArbre){
+    public static boolean isAABRI(GrandArbre unGrandArbre){
         boolean rst = true;
         ArrayList tabArbreGrandArbre = new ArrayList();
         tabArbreGrandArbre = ManipulationAABRI.GrandArbreToTab(unGrandArbre);
@@ -33,7 +35,7 @@ public class VerifierAABRI {
         return rst;
     }
     
-    public boolean isABRI(Arbre unArbre){
+    public static boolean isABRI(Arbre unArbre){
         boolean rst  = true;
         ArrayList tabValArbre = new ArrayList();
         tabValArbre = ManipulationAABRI.ArbreToTab(unArbre);

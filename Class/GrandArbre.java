@@ -36,14 +36,15 @@ public class GrandArbre {
 	
 	public String toString(){
 		String result;
-		result = "GrandArbre:{racine : "+ this.racine;
+		/*result = "GrandArbre:{racine : "+ this.racine;
 		if (this.sag != null){
 			result += ", sag : "+this.sag;
 		}
 		if (this.sad != null){
 			result += ", sad:"+this.sad+"}";
 		}
-		result += " }";
+		result += " }";*/
+                result = "Racine :"+this.racine.getRacine();
 		return result;
 	}
 }
