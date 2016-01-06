@@ -1,0 +1,23 @@
+===========================================================================================
+				COMPILATION DU PROGRAMME
+===========================================================================================
+- Ouvrir le projet avec l'IDE NetBeans
+- Faire un clic droit sur le projet -> propriété
+- choisir "Run"
+- Sélection MainClasse = IHM.Menu
+- Cliquer sur OK
+- Faire un clique dorit sur le projet -> Clean and Build
+- L'exécutable est maintenant présent dans les Netbeans/dist/AABRI.jar
+
+============================================================================================
+				EXECUTION DU PROGRAMME
+============================================================================================
+- Sous Linux:
+	- ouvrir un terminal
+	- se placer là où se trouve l'exécutable AABRI.jar
+	- taper java -jar "AABRI.jar"
+	- le menu s'ouvre
+
+- Sous Windows
+	- double cliquer sur AARBI.jar
+	- le menu s'ouvre

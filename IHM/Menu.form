@@ -26,15 +26,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="B_InsererValeur" max="32767" attributes="0"/>
-                  <Component id="CB_lstAABRI" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="CB_lstAABRI" alignment="2" max="32767" attributes="0"/>
                   <Component id="B_FichierVersAabri" alignment="2" max="32767" attributes="0"/>
                   <Component id="B_aabriVersFichier" alignment="2" max="32767" attributes="0"/>
                   <Component id="B_aabrisAleatoire" alignment="2" max="32767" attributes="0"/>
                   <Component id="B_verifierAabri" alignment="2" max="32767" attributes="0"/>
-                  <Component id="B_SupprimerValeur" alignment="0" max="32767" attributes="0"/>
-                  <Component id="B_afficher" alignment="0" max="32767" attributes="0"/>
+                  <Component id="B_InsererValeur" alignment="2" max="32767" attributes="0"/>
+                  <Component id="B_SupprimerValeur" alignment="2" max="32767" attributes="0"/>
+                  <Component id="B_afficher" alignment="2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -42,24 +42,24 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="CB_lstAABRI" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="B_FichierVersAabri" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="B_aabriVersFichier" min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="CB_lstAABRI" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="B_aabrisAleatoire" min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="B_FichierVersAabri" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="B_verifierAabri" min="-2" pref="23" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="B_InsererValeur" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="B_SupprimerValeur" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="B_afficher" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="B_aabriVersFichier" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="B_aabrisAleatoire" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="B_verifierAabri" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="B_InsererValeur" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="B_SupprimerValeur" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="B_afficher" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

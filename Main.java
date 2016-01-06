@@ -4,6 +4,7 @@ import GestionAABRI.ManipulationAABRI;
 import GestionAABRI.AABRIVersFichier;
 import Class.Arbre;
 import Class.GrandArbre;
+import Utilitaire.AABRIException;
 import java.io.*;
 
 public class Main {
@@ -11,7 +12,7 @@ public class Main {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, AABRIException {
 		// TODO Auto-generated method stub
                 String Emplacement = "C:\\Users\\Audrey\\Documents\\DOCUMENTS\\ETUDES\\UNIVERSITE\\Cours\\Master 1\\Complément en algorithme\\Projet AABRIS\\src\\";
 		String fichier = Emplacement+"arbre.txt";

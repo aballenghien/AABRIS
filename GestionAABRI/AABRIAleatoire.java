@@ -2,6 +2,7 @@ package GestionAABRI;
 
 import Class.Arbre;
 import Class.GrandArbre;
+import Utilitaire.AABRIException;
 
 
 public class AABRIAleatoire {
@@ -15,7 +16,7 @@ public class AABRIAleatoire {
          * @param valMax
          * @return 
          */
-	public static Arbre genererArbre(int p,int valMin, int valMax){
+	public static Arbre genererArbre(int p,int valMin, int valMax) throws AABRIException{
             Arbre unArbre = new Arbre();
             int min = valMax;
             int max = valMin;
@@ -45,7 +46,7 @@ public class AABRIAleatoire {
          * @param q
          * @return 
          */
-	public static GrandArbre genererGrandArbre(int p, int q){
+	public static GrandArbre genererGrandArbre(int p, int q) throws AABRIException{
             GrandArbre unGrandArbre = new GrandArbre();
             Arbre unArbre;
             int i;

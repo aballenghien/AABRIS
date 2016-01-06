@@ -3,6 +3,7 @@ package GestionAABRI;
 
 import Class.Arbre;
 import Class.GrandArbre;
+import Utilitaire.AABRIException;
 import java.util.ArrayList;
 
 /*
@@ -22,7 +23,7 @@ public class ManipulationAABRI {
      * @param x
      * @return 
      */
-    public static GrandArbre insererValeur(GrandArbre AABRI, int x){
+    public static GrandArbre insererValeur(GrandArbre AABRI, int x) throws AABRIException{
         if(AABRI != null){
             if(x >= AABRI.getRacine().getMin() && x <= AABRI.getRacine().getMax()){
                 AABRI.setRacine(insererValeurArbre(x, AABRI.getRacine()));
@@ -30,20 +31,22 @@ public class ManipulationAABRI {
                 if(AABRI.getSag()!= null){
                     insererValeur(AABRI.getSag(), x);
                 }else{
-                    System.out.println("la valeur x est hors périmètre(trop petite)");
+                    System.out.println("La valeur x est hors périmètre(trop petite)");
+                    throw new AABRIException("la valeur x est hors périmètre(trop petite)");
                 }
             }else if(x > AABRI.getRacine().getMax()){
                 if(AABRI.getSad()!=null){
                   insererValeur(AABRI.getSad(),x);   
                 }else{
-                    System.out.println("la valeur x est hors périmètre (trop grande)");
+                    System.out.println("La valeur x est hors périmètre (trop grande)");
+                    throw new AABRIException("La valeur x est hors périmètre(trop grande)");
                 }                            
             }
         }
         return AABRI;
     }
     
-    public static GrandArbre supprimerValeur(GrandArbre AABRI, int x){
+    public static GrandArbre supprimerValeur(GrandArbre AABRI, int x) throws AABRIException{
         if (AABRI != null){
             if(x >= AABRI.getRacine().getMin() && x<= AABRI.getRacine().getMax()){
                 AABRI.setRacine(supprimerValeurArbre(AABRI.getRacine(),x));
@@ -52,19 +55,21 @@ public class ManipulationAABRI {
                     supprimerValeur(AABRI.getSag(), x);
                 }else{
                     System.out.println("la valeur x est hors périmètre(trop petite)");
+                    throw new AABRIException("la valeur x est hors périmètre(trop petite)");
                 }
             }else if(x > AABRI.getRacine().getMax()){
                 if(AABRI.getSad()!=null){
                   supprimerValeur(AABRI.getSad(),x);   
                 }else{
                     System.out.println("la valeur x est hors périmètre (trop grande)");
+                    throw new AABRIException("la valeur x est hors périmètre(trop petite)");
                 }                            
             }
         }
         return AABRI;
     }
     
-    public static Arbre supprimerValeurArbre(Arbre unArbre, int x){
+    public static Arbre supprimerValeurArbre(Arbre unArbre, int x) throws AABRIException{
         int racine;
         if (unArbre != null){
             if (x == unArbre.getRacine()){
@@ -78,6 +83,7 @@ public class ManipulationAABRI {
                 supprimerValeurArbre(unArbre.getSad(), racine);
             }else{
                 System.out.println("La valeur que vous rechercher n'existe pas");
+                throw new AABRIException("La valeur que vous rechercher n'existe pas");
             }
         }
         return unArbre;
@@ -105,7 +111,7 @@ public class ManipulationAABRI {
          * @param unArbre
          * @return 
          */
-	public static Arbre insererValeurArbre(int val, Arbre unArbre){
+	public static Arbre insererValeurArbre(int val, Arbre unArbre) throws AABRIException{
             if(unArbre.getRacine()==0){
                     unArbre.setRacine(val);
             }else{
@@ -121,6 +127,7 @@ public class ManipulationAABRI {
                     unArbre.getSad().setRacine(val);
                 }else if(val == unArbre.getRacine()){
                     System.out.println("la valeur existe déjà dans l'arbre");
+                    throw new AABRIException("la valeur existe déjà dans l'arbre");
                 }
             }
             return unArbre;

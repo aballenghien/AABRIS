@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import Class.Arbre;
 import Class.GrandArbre;
+import java.util.ArrayList;
 
 
 public class AABRIVersFichier {
@@ -65,6 +66,18 @@ public class AABRIVersFichier {
                 System.out.print(ligne);
                 afficherArbre(unGrandArbre.getSag());
                 afficherArbre(unGrandArbre.getSad());
+            }
+            return ligne;
+		
+	}
+        
+        public static ArrayList afficherArbreTab(GrandArbre unGrandArbre){
+            ArrayList ligne = new ArrayList<>();
+            if(unGrandArbre != null){
+                ligne.add(construireLigne(unGrandArbre.getRacine()));
+                System.out.print(ligne);
+                afficherArbreTab(unGrandArbre.getSag());
+                afficherArbreTab(unGrandArbre.getSad());
             }
             return ligne;
 		
