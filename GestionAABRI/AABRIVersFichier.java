@@ -57,15 +57,16 @@ public class AABRIVersFichier {
          * affiche à l'écran sous forme de ligne, le contenu d'un grand Arbre
          * @param unGrandArbre 
          */
-	public static void afficherArbre(GrandArbre unGrandArbre){
+	public static String afficherArbre(GrandArbre unGrandArbre){
+            String ligne = "";
             if(unGrandArbre != null){
-                String ligne = "";
                 ligne = construireLigne(unGrandArbre.getRacine());
                 ligne += "\n";
                 System.out.print(ligne);
                 afficherArbre(unGrandArbre.getSag());
                 afficherArbre(unGrandArbre.getSad());
             }
+            return ligne;
 		
 	}
 		

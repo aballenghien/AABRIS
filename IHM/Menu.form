@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -23,33 +24,42 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="B_InsererValeur" max="32767" attributes="0"/>
+                  <Component id="CB_lstAABRI" max="32767" attributes="0"/>
                   <Component id="B_FichierVersAabri" alignment="2" max="32767" attributes="0"/>
                   <Component id="B_aabriVersFichier" alignment="2" max="32767" attributes="0"/>
                   <Component id="B_aabrisAleatoire" alignment="2" max="32767" attributes="0"/>
                   <Component id="B_verifierAabri" alignment="2" max="32767" attributes="0"/>
-                  <Component id="B_ModifierAabbri" alignment="2" max="32767" attributes="0"/>
+                  <Component id="B_SupprimerValeur" alignment="0" max="32767" attributes="0"/>
+                  <Component id="B_afficher" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="B_FichierVersAabri" max="32767" attributes="0"/>
+              <Component id="CB_lstAABRI" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="B_FichierVersAabri" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="B_aabriVersFichier" max="32767" attributes="0"/>
+              <Component id="B_aabriVersFichier" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="B_aabrisAleatoire" max="32767" attributes="0"/>
+              <Component id="B_aabrisAleatoire" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="B_verifierAabri" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="B_ModifierAabbri" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="B_verifierAabri" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="B_InsererValeur" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="B_SupprimerValeur" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="B_afficher" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,12 +97,40 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_verifierAabriActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="B_ModifierAabbri">
+    <Component class="javax.swing.JComboBox" name="CB_lstAABRI">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Modifier un AABRI"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_InsererValeur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ins&#xe9;rer une valeur"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ModifierAabbriActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_InsererValeurActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_SupprimerValeur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Supprimer une valeur"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_SupprimerValeurActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="B_afficher">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Afficher AABRI"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_afficherActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

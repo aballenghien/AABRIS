@@ -6,13 +6,16 @@ package IHM;
 
 import Class.GrandArbre;
 import GestionAABRI.*;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,11 +23,19 @@ import javax.swing.JOptionPane;
  */
 public class Menu extends javax.swing.JFrame {
 
-    ArrayList AABRIS;
+    private static Menu menu;
+    private ArrayList AABRIS;
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    
+    public static Menu getMenu(){
+        if (menu == null){
+            menu = new Menu();
+        }
+        return menu;
+    }
+    private Menu() {
         initComponents();
         AABRIS = new ArrayList();
     }
@@ -36,6 +47,7 @@ public class Menu extends javax.swing.JFrame {
     public void setAABRIS(ArrayList AABRIS) {
         this.AABRIS = AABRIS;
     }
+    
 
     
     /**
@@ -51,9 +63,13 @@ public class Menu extends javax.swing.JFrame {
         B_aabriVersFichier = new javax.swing.JButton();
         B_aabrisAleatoire = new javax.swing.JButton();
         B_verifierAabri = new javax.swing.JButton();
-        B_ModifierAabbri = new javax.swing.JButton();
+        CB_lstAABRI = new javax.swing.JComboBox();
+        B_InsererValeur = new javax.swing.JButton();
+        B_SupprimerValeur = new javax.swing.JButton();
+        B_afficher = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         B_FichierVersAabri.setText("Générer un AABRI à partir d'un fichier");
         B_FichierVersAabri.addActionListener(new java.awt.event.ActionListener() {
@@ -83,10 +99,26 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        B_ModifierAabbri.setText("Modifier un AABRI");
-        B_ModifierAabbri.addActionListener(new java.awt.event.ActionListener() {
+        CB_lstAABRI.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        B_InsererValeur.setText("Insérer une valeur");
+        B_InsererValeur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_ModifierAabbriActionPerformed(evt);
+                B_InsererValeurActionPerformed(evt);
+            }
+        });
+
+        B_SupprimerValeur.setText("Supprimer une valeur");
+        B_SupprimerValeur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_SupprimerValeurActionPerformed(evt);
+            }
+        });
+
+        B_afficher.setText("Afficher AABRI");
+        B_afficher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_afficherActionPerformed(evt);
             }
         });
 
@@ -96,28 +128,37 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(B_FichierVersAabri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_aabriVersFichier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_aabrisAleatoire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_verifierAabri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_ModifierAabbri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(B_InsererValeur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CB_lstAABRI, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_FichierVersAabri, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_aabriVersFichier, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_aabrisAleatoire, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_verifierAabri, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_SupprimerValeur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_afficher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(B_FichierVersAabri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CB_lstAABRI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(B_aabriVersFichier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(B_FichierVersAabri)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(B_aabrisAleatoire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(B_aabriVersFichier, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(B_verifierAabri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(B_aabrisAleatoire, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(B_ModifierAabbri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(B_verifierAabri, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(B_InsererValeur)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(B_SupprimerValeur)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(B_afficher)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,22 +169,26 @@ public class Menu extends javax.swing.JFrame {
 	String fichier = Emplacement+"arbre.txt";
         GrandArbre unGrandArbre = FichierVersAABRI.lireFichier(fichier);
         AABRIS.add(unGrandArbre);
+        reinitialiserListe();
+        JOptionPane.showMessageDialog(this, "L'arbre a été généré avec succès");
     }//GEN-LAST:event_B_FichierVersAabriActionPerformed
 
     private void B_aabrisAleatoireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_aabrisAleatoireActionPerformed
         GrandArbre unGrandArbre = AABRIAleatoire.genererGrandArbre(5, 100);
         AABRIS.add(unGrandArbre);
+        JOptionPane.showMessageDialog(this, "L'arbre a été généré avec succès");
+        reinitialiserListe();
     }//GEN-LAST:event_B_aabrisAleatoireActionPerformed
 
     private void B_aabriVersFichierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_aabriVersFichierActionPerformed
         FileWriter fw = null;
         try {
-            Object []options = AABRIS.toArray();
-            GrandArbre unGrandArbre= (GrandArbre) JOptionPane.showInputDialog(this, "Choisissez un AABRI:", "AABRIS", JOptionPane.PLAIN_MESSAGE, null, options, null);
+            GrandArbre unGrandArbre = (GrandArbre)CB_lstAABRI.getSelectedItem();
             String Emplacement = "C:\\Users\\Audrey\\Documents\\DOCUMENTS\\ETUDES\\UNIVERSITE\\Cours\\Master 1\\Complément en algorithme\\Projet AABRIS\\src\\";
             File fichier2 = new File(Emplacement+"arbre2.txt");
             fw = new FileWriter(fichier2);
             AABRIVersFichier.ecrireFichier(unGrandArbre, fw);
+            JOptionPane.showMessageDialog(this, "Le fichier a été généré");
         } catch (IOException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -156,24 +201,47 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_B_aabriVersFichierActionPerformed
 
     private void B_verifierAabriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_verifierAabriActionPerformed
-        Object []options = AABRIS.toArray();
-        GrandArbre unGrandArbre= (GrandArbre) JOptionPane.showInputDialog(this, "Choisissez un AABRI:", "AABRIS", JOptionPane.PLAIN_MESSAGE, null, options, null);
+        GrandArbre unGrandArbre = (GrandArbre)CB_lstAABRI.getSelectedItem();
         if(VerifierAABRI.isAABRI(unGrandArbre)){
-            JOptionPane.showConfirmDialog(this, "L'arbre est un AABRI");
+            JOptionPane.showMessageDialog(this, "L'arbre est un AABRI");
         }else{
-            JOptionPane.showConfirmDialog(this, "L'arbre n'est pas un AABRI"); 
+            JOptionPane.showMessageDialog(this, "L'arbre n'est pas un AABRI"); 
         }
+        
     }//GEN-LAST:event_B_verifierAabriActionPerformed
 
-    private void B_ModifierAabbriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ModifierAabbriActionPerformed
-        ModifierAABRI mod = new ModifierAABRI();
-        mod.setAABRIS(AABRIS);
-        for(int i = 0; i < AABRIS.size(); i++){
-           mod.getCB_AABRI().addItem(AABRIS.get(i)); 
-        }       
-        mod.setVisible(true);        
-    }//GEN-LAST:event_B_ModifierAabbriActionPerformed
+    private void B_InsererValeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_InsererValeurActionPerformed
+        GrandArbre unGrandArbre = (GrandArbre)CB_lstAABRI.getSelectedItem();
+       int i = CB_lstAABRI.getSelectedIndex();
+       AABRIS.remove(i);
+       String valeur  = JOptionPane.showInputDialog(this, "Saississer une valeur entière positive:");
+       unGrandArbre = ManipulationAABRI.insererValeur(unGrandArbre, Integer.parseInt(valeur));
+       AABRIS.add(unGrandArbre);
+       reinitialiserListe();
+    }//GEN-LAST:event_B_InsererValeurActionPerformed
 
+    private void B_SupprimerValeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SupprimerValeurActionPerformed
+       GrandArbre unGrandArbre = (GrandArbre)CB_lstAABRI.getSelectedItem();
+       int i = CB_lstAABRI.getSelectedIndex();
+       AABRIS.remove(i);
+       String valeur  = JOptionPane.showInputDialog(this, "Saississer une valeur entière positive:");
+       unGrandArbre = ManipulationAABRI.supprimerValeur(unGrandArbre,Integer.parseInt(valeur));
+       AABRIS.add(unGrandArbre);
+       reinitialiserListe();
+    }//GEN-LAST:event_B_SupprimerValeurActionPerformed
+
+    private void B_afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_afficherActionPerformed
+       GrandArbre unGrandArbre = (GrandArbre)CB_lstAABRI.getSelectedItem();
+       JOptionPane.showMessageDialog(this, AABRIVersFichier.afficherArbre(unGrandArbre)); 
+    }//GEN-LAST:event_B_afficherActionPerformed
+
+    private void reinitialiserListe(){
+        int i;
+        CB_lstAABRI.removeAllItems();
+        for(i = 0; i< AABRIS.size(); i++){
+            CB_lstAABRI.addItem(AABRIS.get(i));
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -210,9 +278,12 @@ public class Menu extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_FichierVersAabri;
-    private javax.swing.JButton B_ModifierAabbri;
+    private javax.swing.JButton B_InsererValeur;
+    private javax.swing.JButton B_SupprimerValeur;
     private javax.swing.JButton B_aabriVersFichier;
     private javax.swing.JButton B_aabrisAleatoire;
+    private javax.swing.JButton B_afficher;
     private javax.swing.JButton B_verifierAabri;
+    private javax.swing.JComboBox CB_lstAABRI;
     // End of variables declaration//GEN-END:variables
 }
